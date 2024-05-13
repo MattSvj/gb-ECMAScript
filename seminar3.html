@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //Задание 1: ""Управление персоналом компании""
+
+    // Класс Employee
+    class Employee {
+        constructor(name) {
+            this.name = name;
+        }
+
+    displayInfo() {
+        console.log(`Employee: ${this.name}`);
+    }
+    }
+
+    // Класс Manager наследует Employee
+    class Manager extends Employee {
+        constructor(name, department) {
+            super(name);
+            this.department = department;
+        }
+
+        displayInfo() {
+            console.log(`Manager: ${this.name}, Department: ${this.department}`);
+        }
+    }
+
+    // Пример использования классов
+    const employee1 = new Employee('Иван');
+    employee1.displayInfo();
+
+    const manager1 = new Manager('Анна', 'Отдел продаж');
+    manager1.displayInfo();
+
+    //""Управление списком заказов""
+    // Класс Order
+    class Order {
+        constructor(orderNumber) {
+            this.orderNumber = orderNumber;
+            this.products = [];
+        }
+
+        addProduct(product) {
+            this.products.push(product);
+        }
+
+        getTotalPrice() {
+            let totalPrice = 0;
+            this.products.forEach(product => {
+                totalPrice += product.price;
+            });
+        return totalPrice;
+        }
+    }
+
+    // Пример использования класса
+    class Product {
+        constructor(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+    }
+
+    const order1 = new Order(1);
+
+    const product1 = new Product('Телефон', 500);
+    const product2 = new Product('Наушники', 100);
+    const product3 = new Product('Чехол', 20);
+
+    order1.addProduct(product1);
+    order1.addProduct(product2);
+    order1.addProduct(product3);
+
+    console.log(`Общая стоимость заказа: $${order1.getTotalPrice()}`);
+    </script>
+</body>
+</html>
